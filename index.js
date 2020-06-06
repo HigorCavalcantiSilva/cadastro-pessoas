@@ -1,6 +1,8 @@
 class Classificacao {
     constructor(){
         this.pessoa = []
+        this.masc = 0;
+        this.fem = 0;
     }
 
     addPessoa(item){
@@ -9,6 +11,8 @@ class Classificacao {
     }
 
     mostrar() {
+        this.masc = 0;
+        this.fem = 0;
         var f = 0;
         var m = 0;
         var a = 0;
@@ -19,8 +23,10 @@ class Classificacao {
             
             if(this.pessoa[c].sexo == "F"){
                 f++;
+                this.fem += this.pessoa[c].idade 
             } else {
                 m++
+                this.masc += this.pessoa[c].idade 
             }
 
             if(this.pessoa[c].idade >= 60){
@@ -34,6 +40,9 @@ class Classificacao {
             }
         }
 
+        let medm = this.masc / m
+        let medf = this.fem / f
+
         let a1 = document.querySelector("#fem");
         let a2 = document.querySelector("#masc");
         let a3 = document.querySelector("#adu");
@@ -41,8 +50,8 @@ class Classificacao {
         let a5 = document.querySelector("#ad");
         let a6 = document.querySelector("#i");
 
-        a1.textContent = f;
-        a2.textContent = m;
+        a1.textContent = `${f} - Media de idade( ${medf} )`;
+        a2.textContent = `${m} - Media de idade( ${medm} )`;
         a3.textContent = a;
         a4.textContent = cr;
         a5.textContent = ad;
